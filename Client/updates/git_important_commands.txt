@@ -1,0 +1,20 @@
+To restore back , what is present on github (last commit) -> git restore .
+
+To see the changes and commits -> git log
+
+now if you want to move to specific commit -> git reset --hard <commit-hash>
+(this commit-hash is the long string written after commit word in git log)
+
+now if you want to move to specific commit and u also want to like 2 commits back 
+-> git reset --hard HEAD~2
+and now if you want that this becomes the head branch on git hub also 
+then use -> git push origin <branch-name> --force
+
+
+First i will do some changes and push it in my repo 
+and kumar will do some changes and push it his repo
+
+and i will create pull request and then he will merge accordingly 
+then i will merge and his merging verfied
+
+and then simply we should git pull in our local system
