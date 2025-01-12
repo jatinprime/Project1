@@ -15,3 +15,4 @@ Made Header
 Design Signup page properly
 Desing Footer
 Used useLocator hook in layout.jsx
+Made little bit home page
