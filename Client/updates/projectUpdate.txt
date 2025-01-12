@@ -18,3 +18,4 @@ Used useLocator hook in layout.jsx
 
 Made little bit home page
 Added link to go to home page in login and register 
+Added bg video in home page and did some styling in home page only 
