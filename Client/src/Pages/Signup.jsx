@@ -32,7 +32,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-sky-400">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-sky-400">
+      <h1 className="text-4xl m-5"><NavLink to= "/" >My Logo</NavLink></h1>
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-3xl font-semibold text-center mb-6">Signup</h1>
         <form onSubmit={handleSubmit}>

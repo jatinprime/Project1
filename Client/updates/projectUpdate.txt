@@ -15,3 +15,4 @@ Made Header
 Design Signup page properly
 Desing Footer
 Used useLocator hook in layout.jsx
+Added link to go to home page in login and register 
