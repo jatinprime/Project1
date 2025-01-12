@@ -3,9 +3,11 @@ import React from 'react'
 
 const Home = () => {
   return (
-      <>
-        its home
-      </>
+
+    <div>
+      Its a home page
+    </div>
+
   )
 }
 
