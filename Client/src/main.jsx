@@ -6,12 +6,20 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import Layout from './Layout'
 import { RouterProvider } from 'react-router'
 import About from './Pages/About'
+import Login from './Pages/Login'
+import Hello from './Pages/hello'
+import Home from './Pages/Home'
+import Notfound from './Pages/Notfound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path = "/" element = {<Layout/>}>
-      {/* <Route path = "" element = {} /> */}
+      <Route path = "" element = {<Home/>} />
       <Route path = "about" element = {<About/>} />
+      <Route path="about/hello" element = {<Hello/>} />
+      <Route path = "login" element = {<Login/>} />
+      <Route path = "*" element = {<Notfound/>} />
+      
     </Route>
   )
 )
@@ -19,6 +27,5 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}/>
-    <App/>
   </StrictMode>,
 )
