@@ -21,9 +21,8 @@ const Footer = () => {
           </NavLink>
           <NavLink 
             to="/contact" 
-            className={({ isActive }) => 
-              isActive ? "text-blue-400 font-bold" : "hover:text-blue-400"
-            }
+            className={({ isActive }) => {return isActive ? "text-blue-400 font-bold" : "hover:text-blue-400"}}
+            
           >
             Contact
           </NavLink>

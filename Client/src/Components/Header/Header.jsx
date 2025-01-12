@@ -10,7 +10,7 @@ const Header = () => {
 
             <nav className="flex space-x-6">
                 <NavLink
-                    to="/home"
+                    to="/"
                     className={({ isActive }) =>
                         isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
                     }
