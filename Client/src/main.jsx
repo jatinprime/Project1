@@ -21,6 +21,7 @@ const router = createBrowserRouter(
       <Route path = "/signup" element = {<Signup/>} />
       <Route path = "/privacy-policy" element = {<PrivacyPolicy/>} />
       {/* <Route path = "/about" element = {<About/>} /> */}
+
       <Route path = "*" element = {<Notfound/>} />
       
     </Route>
@@ -30,6 +31,5 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}/>
-    {/* <App/> */}
   </StrictMode>,
 )
