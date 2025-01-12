@@ -6,21 +6,20 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import Layout from './Layout'
 import { RouterProvider } from 'react-router'
 import About from './Pages/About'
-import Login from './Pages/Login.jsx'
 import Signup from './Pages/Signup.jsx'
 import Home from './Pages/Home.jsx'
 import Notfound from './Pages/Notfound.jsx'
 import PrivacyPolicy from './Pages/PrivacyPolicy.jsx'
+import Contact from './Pages/contact.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path = "" element = {<Layout/>}>
       <Route path = "/" element = {<Home/>}/>
-      <Route path = "/login" element = {<Login/>} />
       <Route path = "/about" element = {<About/>} />
-      <Route path = "/signup" element = {<Signup/>} />
+      <Route path = "/register" element = {<Signup/>} />
+      <Route path = "/contact" element = {<Contact/>}/>
       <Route path = "/privacy-policy" element = {<PrivacyPolicy/>} />
-      {/* <Route path = "/about" element = {<About/>} /> */}
 
       <Route path = "*" element = {<Notfound/>} />
       
@@ -31,7 +30,7 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}/>
-    <h1>Changes 1</h1>
-    <h1>changes 2</h1>
+    {/* <h1>Changes 1</h1>
+    <h1>changes 2</h1> */}
   </StrictMode>,
 )

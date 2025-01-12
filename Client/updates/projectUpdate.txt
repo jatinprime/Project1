@@ -8,3 +8,8 @@ now checking in head repo
 
 <--Date - 11/01/2025-->
 Added Pages Files like Home , Login , MovieDetails , Profile , Signup
+
+<--- Date - 12/01/2025 -->
+Design Signup page properly
+Desing Footer
+Used useLocator hook in layout.jsx
