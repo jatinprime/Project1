@@ -9,10 +9,20 @@ const Header = () => {
             </div>
 
             <nav className="flex space-x-6">
-                <NavLink to="/" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/home"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     Home
                 </NavLink>
-                <NavLink to="/profile" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/profile"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     Profile
                 </NavLink>
             </nav>
@@ -26,19 +36,39 @@ const Header = () => {
             </div>
 
             <div className="about">
-                <NavLink to="/about" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     About
                 </NavLink>
             </div>
 
             <div className="auth-buttons flex space-x-4">
-                <NavLink to="/login" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     Login
                 </NavLink>
-                <NavLink to="/register" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     Register
                 </NavLink>
-                <NavLink to="/logout" className="text-gray-700 hover:text-blue-500" activeClassName="text-blue-500">
+                <NavLink
+                    to="/logout"
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-500 font-semibold" : "text-gray-700 hover:text-blue-500"
+                    }
+                >
                     Logout
                 </NavLink>
             </div>

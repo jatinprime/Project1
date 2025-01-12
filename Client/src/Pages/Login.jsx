@@ -1,18 +1,34 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // If using React Router for navigation
+import { NavLink, useNavigate } from "react-router-dom"; // If using React Router for navigation
 // import "./Login.css"; // Add custom styles here (if needed)
 
 const Login = () => {
-  
+
+    const navigate = useNavigate() ;
+  const [data , setData] = useState({
+    email : "" ,
+    password : "" ,
+  }) ;
+  const [email , setEmail] = useState('') ;
+  const [password , setPassword] = useState('') ;
+  const handleLogin = (e) => {
+    e.preventDefault() ;
+    setData({
+        email : email ,
+        password : password
+    })
+    navigate("/") ;
+  }
 
   return (
-    <div className="max-w-sm mx-auto p-6 border border-gray-300 rounded-lg shadow-lg bg-green-600">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-center text-2xl text-gray-800">Login</h1>
       <form onSubmit={handleLogin}>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email:</label>
           <input
-            disabled
+            // disabled
             type="email"
             id="email"
             value={email}
@@ -36,15 +52,17 @@ const Login = () => {
           />
         </div>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-
         <button type="submit" className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
           Login
         </button>
       </form>
       <p className="mt-4 text-center text-sm">
-        Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign up</a>
+        Don't have an account? 
+        <NavLink to="/register" className="text-blue-500 hover:underline">
+            Register here
+        </NavLink>
       </p>
+        </div>
     </div>
   );
 };
