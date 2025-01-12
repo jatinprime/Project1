@@ -25,8 +25,8 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky z-50 top-0 left-0 w-full px-6 bg-gray-100 border-b border-gray-300 transition-all duration-300 ease-in-out ${
-        scrolling ? 'py-2 opacity-90' : 'py-4'
+      className={`text-white sticky z-50 top-0 left-0 w-full px-6 bg-transparent  transition-all duration-300 ease-in-out ${
+        scrolling ? 'py-2 ' : 'py-4 '
       }`}
     >
       <div className="flex items-center justify-between">
@@ -39,8 +39,8 @@ const Header = () => {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-blue-500'
             }
           >
             Home
@@ -49,8 +49,8 @@ const Header = () => {
             to="/profile"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-blue-500'
             }
           >
             Profile
@@ -70,8 +70,8 @@ const Header = () => {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-red-300'
             }
           >
             About
@@ -83,8 +83,8 @@ const Header = () => {
             to="/login"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-blue-500'
             }
           >
             Login
@@ -93,8 +93,8 @@ const Header = () => {
             to="/register"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-blue-500'
             }
           >
             Register
@@ -103,8 +103,8 @@ const Header = () => {
             to="/logout"
             className={({ isActive }) =>
               isActive
-                ? 'text-blue-500 font-semibold'
-                : 'text-gray-700 hover:text-blue-500'
+                ? 'text-red-600 font-semibold'
+                : 'text-white hover:text-blue-500'
             }
           >
             Logout
