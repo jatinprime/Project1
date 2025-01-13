@@ -106,17 +106,14 @@ const Header = () => {
           >
             Register
           </NavLink>}
-          {auth && <NavLink
-            to="/"
-            onClick={() => setAuth(false)}
-            className={({ isActive }) =>
-              isActive
-                ? 'text-red-600 font-semibold'
-                : 'text-white hover:text-blue-500'
-            }
-          >
-            Logout
-          </NavLink>}
+          {auth && 
+            <button
+              onClick={() => setAuth(false)} // Set auth to false on logout
+              className="text-white hover:text-blue-500 font-semibold bg-transparent border-none cursor-pointer"
+            >
+              Logout
+            </button>
+          }
         </div>
       </div>
     </header>
