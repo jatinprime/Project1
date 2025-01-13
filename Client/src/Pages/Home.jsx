@@ -34,7 +34,8 @@ const Home = () => {
           autoPlay
           loop
           muted
-          style={{ opacity: opacity }} // Apply the dynamic opacity
+          style={{ opacity: opacity , pointerEvents: 'none'}} // Apply the dynamic opacity
+          
         />
         {/* <div
           className="absolute inset-0 bg-black"
