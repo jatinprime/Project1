@@ -29,7 +29,7 @@ const Home = () => {
       {/* Hero Section with Video Background */}
       <section className="relative h-screen w-full">
         <video
-          className="fixed inset-0 w-full h-full object-cover"
+          className="-z-100 fixed inset-0 w-full h-full object-cover"
           src="https://res.cloudinary.com/dosmzkqeu/video/upload/w_2250,h_1080/pdjgycdqyolxup44e6il.mp4"
           autoPlay
           loop
@@ -59,6 +59,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-center text-red-500 mb-8">Browse Categories</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {/* Movie Category 1 */}
+          
           <div className="bg-gray-700 rounded-lg p-4 text-center">
             <h3 className="text-xl font-semibold text-white">Action</h3>
           </div>
