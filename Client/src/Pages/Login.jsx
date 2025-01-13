@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"; // If using React Router for navigation
+import UserContext from "../Context/UserContext";
 // import "./Login.css"; // Add custom styles here (if needed)
 
 const Login = () => {
-
+    const {setAuth} = useContext(UserContext) ;
     const navigate = useNavigate() ;
   const [data , setData] = useState({
     email : "" ,
@@ -17,6 +18,7 @@ const Login = () => {
         email : email ,
         password : password
     })
+    setAuth(true) ;
     navigate("/") ;
   }
 

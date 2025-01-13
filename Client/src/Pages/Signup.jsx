@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate , NavLink } from "react-router-dom";
+import UserContext from "../Context/UserContext";
 
 const Signup = () => {
+
+  const {setAuth} = useContext(UserContext) ;
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -10,6 +13,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the page from reloading
+    setAuth(true);
 
     // Process the form data (e.g., send to an API)
     console.log("Form submitted with:", formData);

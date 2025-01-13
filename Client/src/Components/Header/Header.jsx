@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import UserContext from '../../Context/UserContext';
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
-  const [auth , setauth] = useState(false) ;
+  const {auth , setAuth} = useContext(UserContext) ;
 
   // Handle the scroll event to change the navbar style
   const handleScroll = () => {
@@ -32,7 +33,12 @@ const Header = () => {
     >
       <div className="flex items-center justify-between">
         <div className="logo text-xl font-bold">
+          <NavLink
+            to= "/"
+          >
           <h1>MyLogo</h1>
+          </NavLink>
+          
         </div>
 
         <nav className="flex space-x-6">
@@ -72,7 +78,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive
                 ? 'text-red-600 font-semibold'
-                : 'text-white hover:text-red-300'
+                : 'text-white hover:text-blue-500'
             }
           >
             About
@@ -101,7 +107,8 @@ const Header = () => {
             Register
           </NavLink>}
           {auth && <NavLink
-            to="/logout"
+            to="/"
+            onClick={() => setAuth(false)}
             className={({ isActive }) =>
               isActive
                 ? 'text-red-600 font-semibold'
