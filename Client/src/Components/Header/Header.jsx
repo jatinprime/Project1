@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [auth , setauth] = useState(false) ;
 
   // Handle the scroll event to change the navbar style
   const handleScroll = () => {
@@ -79,7 +80,7 @@ const Header = () => {
         </div>
 
         <div className="auth-buttons flex space-x-4">
-          <NavLink
+          {!auth && <NavLink
             to="/login"
             className={({ isActive }) =>
               isActive
@@ -88,8 +89,8 @@ const Header = () => {
             }
           >
             Login
-          </NavLink>
-          <NavLink
+          </NavLink>}
+          {!auth && <NavLink
             to="/register"
             className={({ isActive }) =>
               isActive
@@ -98,8 +99,8 @@ const Header = () => {
             }
           >
             Register
-          </NavLink>
-          <NavLink
+          </NavLink>}
+          {auth && <NavLink
             to="/logout"
             className={({ isActive }) =>
               isActive
@@ -108,7 +109,7 @@ const Header = () => {
             }
           >
             Logout
-          </NavLink>
+          </NavLink>}
         </div>
       </div>
     </header>
