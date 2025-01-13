@@ -13,6 +13,7 @@ import Home from './Pages/Home.jsx'
 import Notfound from './Pages/Notfound.jsx'
 import PrivacyPolicy from './Pages/PrivacyPolicy.jsx'
 import Contact from './Pages/contact.jsx'
+import MovieDetails from './Pages/MovieDetails'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       <Route path = "/register" element = {<Signup/>} />
       <Route path = "/contact" element = {<Contact/>}/>
       <Route path = "/privacy-policy" element = {<PrivacyPolicy/>} />
-
+      <Route path='/movie' element = {<MovieDetails/>} />
         <Route path = "*" element = {<Notfound/>} />
       
       </Route>
