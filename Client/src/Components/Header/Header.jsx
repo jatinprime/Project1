@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <header
-      className={`text-white sticky z-50 top-0 left-0 w-full px-6 bg-transparent  transition-all duration-300 ease-in-out ${
+      className={`text-white fixed z-50 top-0 left-0 w-full px-6 bg-transparent  transition-all duration-300 ease-in-out ${
         scrolling ? 'py-2 ' : 'py-4 '
       }`}
     >
@@ -61,7 +61,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-red-950"
           />
         </div>
 
