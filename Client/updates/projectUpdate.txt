@@ -23,3 +23,5 @@ Added bg video in home page and did some styling in home page only
 <--Date - 13/01/2025-->
 
 Created Context store and add conditional rendering for login register logout
+Added a infinite runnable explore movie and added some movie card using cloudinary
+Added a MovieDetails page
