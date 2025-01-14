@@ -36,13 +36,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-sky-400">
-      <h1 className="text-4xl m-5"><NavLink to= "/" >My Logo</NavLink></h1>
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-semibold text-center mb-6">Signup</h1>
+    <div className="flex flex-col justify-center items-center min-h-screen bg-sky-400"
+    style={{
+      backgroundImage: "url('https://res.cloudinary.com/dosmzkqeu/image/upload/w_2250,h_1080/Create-A-Cover-Picture-For-A-Facebook-Page-About-Movies-72113659-1_faympo.jpg')",
+      backgroundSize: "cover", 
+      backgroundPosition: "center"
+    }}
+    >
+      <h1 className="text-4xl m-5 text-red-600 border border-red-700 rounded-2xl p-4 bg-black"><NavLink to= "/" >My Logo</NavLink></h1>
+      <div className="bg-black/80 border p-8 rounded-lg shadow-lg w-full max-w-md opacity-95">
+        <h1 className="text-3xl font-semibold text-center text-red-600 mb-6">Signup</h1>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4 flex flex-col justify-center items-end">
-              <label className="block text-gray-700 text-sm font-medium" htmlFor="username">
+          <div className="mb-4 flex flex-col justify-center">
+              <label className="block text-red-600 text-sm font-medium" htmlFor="username">
                 UserName
               </label>
               <input
@@ -57,8 +63,8 @@ const Signup = () => {
             </div>
 
 
-          <div className="mb-4 flex flex-col justify-center items-end">
-            <label className="block text-gray-700 text-sm font-medium" htmlFor="email">
+          <div className="mb-4 flex flex-col justify-center">
+            <label className="block text-red-600 text-sm font-medium" htmlFor="email">
               Email
             </label>
             <input
@@ -72,8 +78,8 @@ const Signup = () => {
             />
           </div>
 
-          <div className="mb-4 flex flex-col justify-center items-end">
-            <label className="block text-gray-700 text-sm font-medium" htmlFor="password">
+          <div className="mb-4 flex flex-col justify-center">
+            <label className="block text-red-600 text-sm font-medium" htmlFor="password">
               Password
             </label>
             <input
@@ -96,7 +102,7 @@ const Signup = () => {
             </button>
           </div>
         </form>
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-4 text-center text-red-600 text-sm">
           Already have Account ? 
           <NavLink to="/login" className="text-blue-500 hover:underline">
             Login here
