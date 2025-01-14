@@ -1,13 +1,36 @@
-import React from "react";
+
+
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+// import UserContext from "../../Context/UserContext";
+// 
+
+import MovieData from "../Movies/MovieData";
+import UserContext from "../Context/UserContext";
 
 const MovieDetails = () => {
+  const { moviename } = useContext(UserContext);
+  const { title } = useParams(); // Get the movie title from the URL
+
+  // Find the movie data based on the title
+  const movie = MovieData.find((movie) => movie.title === title);
+
+   // Scroll to top when the component mounts
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (!movie) {
+    return <p>Movie not found</p>;
+  }
+
   return (
     <div className="relative h-screen w-full">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://res.cloudinary.com/dosmzkqeu/image/upload/w_2250,h_1080/avengers-endgame-characters-qj40k81b20462uer_lhaebv.jpg')`,
+          backgroundImage: `url('${movie.imageUrl}')`,
         }}
       >
         {/* Overlay */}
@@ -16,7 +39,7 @@ const MovieDetails = () => {
 
       {/* Movie Details */}
       <div className="relative z-10 flex flex-col items-start justify-center h-full px-8 md:px-16 lg:px-24 text-white">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">Movie Title</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">{movie.title}</h1>
         <p className="text-sm md:text-lg mb-6 max-w-lg">
           This is a short description of the movie. It gives a brief overview of
           the plot and storyline, enticing viewers to watch it.
