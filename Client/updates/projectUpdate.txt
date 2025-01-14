@@ -25,3 +25,5 @@ Added bg video in home page and did some styling in home page only
 Created Context store and add conditional rendering for login register logout
 Added a infinite runnable explore movie and added some movie card using cloudinary
 Added a MovieDetails page
+Made MovieDetails page better with the functionality to show remaining left MovieDetails
+Login and Signup Design and Search bar using trim 
