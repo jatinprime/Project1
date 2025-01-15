@@ -14,6 +14,7 @@ import Notfound from './Pages/Notfound.jsx'
 import PrivacyPolicy from './Pages/PrivacyPolicy.jsx'
 import Contact from './Pages/contact.jsx'
 import MovieDetails from './Pages/MovieDetails'
+import CategoryMoviePage from './Pages/CategoryMoviePage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path = "/contact" element = {<Contact/>}/>
       <Route path = "/privacy-policy" element = {<PrivacyPolicy/>} />
       <Route path="/movie/:title" element={<MovieDetails />} /> {/* Dynamic route */}
+      <Route path="/category/:genre" element={<CategoryMoviePage/>} />
       {/* <Route path='/movie' element = {<MovieDetails/>} /> */}
         <Route path = "*" element = {<Notfound/>} />
       

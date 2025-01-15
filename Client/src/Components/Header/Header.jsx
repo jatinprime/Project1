@@ -129,6 +129,7 @@ import MovieData from "../../Movies/MovieData";
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [scrollSearch, setscrollSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const [filteredMovies, setFilteredMovies] = useState([]); // State for filtered movie suggestions
   const { auth, setAuth } = useContext(UserContext);
@@ -141,6 +142,10 @@ const Header = () => {
     } else {
       setScrolling(false);
     }
+
+    if(window.scrollY > 600){
+      setscrollSearch(true) ;
+    }else setscrollSearch(false) ;
   };
 
   // Update filtered movies based on search query
@@ -214,7 +219,7 @@ const Header = () => {
             placeholder="Search movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="px-4 py-2 bg-transparent border border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={`px-4 py-2 bg-transparent border ${scrollSearch ? 'border-pink-800' : 'border-white'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
           />
           {filteredMovies.length > 0 && (
             <div className="absolute left-0 mt-2 w-full bg-white rounded-lg shadow-lg z-10">

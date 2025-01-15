@@ -33,8 +33,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        scroll: "scroll 10s linear infinite",
-        reverseScroll: "reverseScroll 10s linear infinite", // Reverse scroll animation
+        scroll: "scroll 15s linear infinite",
+        reverseScroll: "reverseScroll 15s linear infinite", // Reverse scroll animation
       },
       keyframes: {
         scroll: {
