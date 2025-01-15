@@ -68,7 +68,7 @@ const Signup = () => {
           <div className="relative mb-6">
             <label
               htmlFor="username"
-              className={`absolute left-3 top-3 text-sm transition-all duration-300 mt-2 ${
+              className={`absolute left-3 -top-4 text-sm transition-all duration-300 mt-2 ${
                 focused.username || formData.username
                   ? "-top-6 text-xs text-pink-300"
                   : "top-3 text-white"
@@ -93,7 +93,7 @@ const Signup = () => {
           <div className="relative mb-6">
             <label
               htmlFor="email"
-              className={`absolute left-3 top-3 text-sm transition-all duration-300 mt-2 ${
+              className={`absolute left-3 -top-4 text-sm transition-all duration-300 mt-2 ${
                 focused.email || formData.email
                   ? "-top-6 text-xs text-pink-300"
                   : "top-3 text-white"
@@ -118,7 +118,7 @@ const Signup = () => {
           <div className="relative mb-6">
             <label
               htmlFor="password"
-              className={`absolute left-3 top-3 text-sm transition-all duration-300 mt-2 ${
+              className={`absolute left-3 -top-4 text-sm transition-all duration-300 mt-2 ${
                 focused.password || formData.password
                   ? "-top-6 text-xs text-pink-300"
                   : "top-3 text-white"
