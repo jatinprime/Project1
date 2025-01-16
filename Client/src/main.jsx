@@ -17,6 +17,7 @@ import MovieDetails from './Pages/MovieDetails'
 import CategoryMoviePage from './Pages/CategoryMoviePage.jsx'
 import SubscriptionPage from './Pages/SubscriptionPage.jsx'
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path = "" element = {<Layout/>}>

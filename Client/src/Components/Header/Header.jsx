@@ -185,7 +185,7 @@ const Header = () => {
   return (
     <header
       className={`text-white fixed z-50 top-0 left-0 w-full px-6 bg-transparent transition-all duration-300 ease-in-out ${
-        scrolling ? "py-2 " : "py-4 "
+        scrolling ? "py-2 backdrop-blur-md" : "py-4 bg-transparent"
       }`}
     >
       <div className="flex items-center justify-between">
