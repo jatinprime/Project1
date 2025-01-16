@@ -40,4 +40,6 @@ Changed LOGin and Signup design for better look
 
 Handled the functionality of start browsing button
 Created a page of subscription 
+Added About and Contact page , NOT found page 
+Header scroll blur functionality
 
