@@ -36,3 +36,10 @@ Made browse section
 Made browse page section for remaining MovieDetails
 Changed LOGin and Signup design for better look
 
+<--Date - 16/01/2025  --> 
+
+Handled the functionality of start browsing button
+Created a page of subscription 
+Added About and Contact page , NOT found page 
+Header scroll blur functionality
+

@@ -132,8 +132,13 @@ const Header = () => {
   const [scrollSearch, setscrollSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const [filteredMovies, setFilteredMovies] = useState([]); // State for filtered movie suggestions
+  
   const { auth, setAuth } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const handleProClick = () =>{
+    navigate('/subscription') ;
+  }
 
   // Handle the scroll event to change the navbar style
   const handleScroll = () => {
@@ -275,6 +280,19 @@ const Header = () => {
               Register
             </NavLink>
           )}
+          {
+  auth && (
+    <button 
+      onClick={handleProClick}
+      className="text-white hover:text-blue-500 font-semibold bg-transparent border-none cursor-pointer flex items-center space-x-2"
+    >
+      <span>Pro</span>
+      <span role="img" aria-label="crown" className="text-yellow-400">👑</span> {/* Crown emoji */}
+    </button>
+  )
+}
+
+
           {auth && (
             <button
               onClick={() => setAuth(false)} // Set auth to false on logout

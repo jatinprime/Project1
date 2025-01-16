@@ -256,12 +256,15 @@ const Login = () => {
           </div>
 
           <div className="text-center">
-            <button
-              type="submit"
-              className="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-pink-500"
-            >
-              Login
-            </button>
+          <button
+  type="submit"
+  className="w-full py-3 bg-gradient-to-r from-pink-600 to-purple-500 text-white font-bold rounded-md 
+             hover:bg-gradient-to-r hover:from-red-500 hover:to-purple-600 hover:opacity-90 
+             focus:outline-none  focus:ring-2 focus:ring-pink-500"
+>
+  Login
+</button>
+
           </div>
         </form>
         <p className="mt-4 text-center text-white text-sm">
