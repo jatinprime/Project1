@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ThankYou from "./ThankYou";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Contact = () => {
