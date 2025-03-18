@@ -20,9 +20,10 @@ app.use(morgan("dev")) ;
 app.use(express.json()) ;
 
 //routes
-app.use('/api/v1/test' , require('./src/routes/testroute.js')) ;
+app.use('/api/v1/' , require('./src/routes/test.routes.js')) ;
+app.use('/api/v1/user' , require('./src/routes/user.routes.js')) ;
 
-const PORT = 8000 ;
+const PORT = process.env.PORT || 8000 ;
 app.listen(PORT, () => {
-        console.log(`App is Listening Successfully on ${PORT}`.white.bgMagenta);
+        console.log(`App is Listening Successfully on http://localhost:${PORT}/api/v1`.white.bgMagenta);
     });
