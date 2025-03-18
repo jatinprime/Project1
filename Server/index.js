@@ -19,22 +19,8 @@ app.use(cors()) ;
 app.use(morgan("dev")) ;
 app.use(express.json()) ;
 
-// Initial basic route
-app.get('/' , (req , res) => {
-    try {
-        res.status(200).send({
-            success : true,
-            message : "initial",
-        })
-    } catch (error) {
-        console.log(error) ;
-        res.status(500).send({
-            success : false,
-            message : "Error in the home initial route",
-            error
-        })
-    }
-})
+//routes
+app.use('/api/v1/test' , require('./src/routes/testroute.js')) ;
 
 const PORT = 8000 ;
 app.listen(PORT, () => {
