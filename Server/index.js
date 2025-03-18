@@ -3,16 +3,23 @@ const dotenv = require('dotenv') ;
 const colors = require('colors') ;
 const morgan = require('morgan') ;
 const cors = require('cors') ;
+const connectDb = require('./src/config/db');
 
+//specific router
 const app = express() ;
 
+// dotenv configurations
 dotenv.config() ;
 
+// Connect to Database
+connectDb() ;
+
+// Middlewares
 app.use(cors()) ;
 app.use(morgan("dev")) ;
 app.use(express.json()) ;
 
-//Initial basic route
+// Initial basic route
 app.get('/' , (req , res) => {
     try {
         res.status(200).send({
@@ -29,15 +36,7 @@ app.get('/' , (req , res) => {
     }
 })
 
-const PORT = process.env.PORT || 8000 ;
-
-app.listen(PORT , () => {
-    try {
-        app.listen(PORT, () => {
-            console.log(`App is Listening Successfully on ${PORT}`.white.bgMagenta);
-        });
-    } catch (error) {
-        console.error("Error starting the server:", error.message);
-        process.exit(1); // Exit the process if the server fails to start
-    }
-})
+const PORT = 8000 ;
+app.listen(PORT, () => {
+        console.log(`App is Listening Successfully on ${PORT}`.white.bgMagenta);
+    });
