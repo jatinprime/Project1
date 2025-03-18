@@ -23,7 +23,19 @@ const userSchema = new Schema({
     password: {
         type: String,
         required : [true , "Password is required"],
-        
+    },
+    avatar : {
+        type: String,
+        default : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT53amOASh6bWQsY-uCLtDjqnm9QizAhU7N4g&s"
+    },
+    role : {
+        type : String,
+        enum : ["USER" , "ADMIN"],
+        default : "USER",
+    },
+    subscription: {
+        id : String,
+        status : String,
     }
 
 })
