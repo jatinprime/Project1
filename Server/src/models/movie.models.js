@@ -4,6 +4,7 @@ const movieSchema = new Schema({
     moviename : {
         type : String,
         required : [true , "MovieName is required"],
+        unique : true
     },
     movievideo : {
         type : String,
