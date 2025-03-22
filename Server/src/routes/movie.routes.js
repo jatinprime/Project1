@@ -1,5 +1,5 @@
 const express = require('express') ;
-const { addMovie, getAllMovieTitles, getSpecificMovieById, getLatestMovies } = require('../controller/movie.controller.js');
+const { addMovie, getAllMovieTitles, getSpecificMovieById, getLatestMovies, getMovieByGenre } = require('../controller/movie.controller.js');
 const upload = require("../middleware/multer.middleware.js");
 
 
@@ -15,7 +15,10 @@ router.get('/getMovieTitle' , getAllMovieTitles) ;
 //GET MOVIE BY TITLE
 router.get('/getMovieById/:id' , getSpecificMovieById) ;
 
-//LATEST MOVIES
+//LATEST MOVIES (Trending movies)
 router.get('/getLatestMovie' , getLatestMovies) ;
+
+//Movie Controller based on category
+router.get('/getMovieByGenre/:genre' , getMovieByGenre) ;
 
 module.exports = router ;

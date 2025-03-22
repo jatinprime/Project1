@@ -174,5 +174,36 @@ const getLatestMovies = async (req , res) => {
     }
 }
 
+//Get movie by Genre
+const getMovieByGenre = async(req , res) => {
+    try{
+        
+        const {genre} = req.params ;      //get genre from params
 
-module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies};
+        //find movies where the genre array contains the requested array
+        const movies = await movieModel.find({genre : genre}) ;
+
+        //validation
+        if (!movies.length) {
+            return res.status(404).json({
+                success: false,
+                message: "No movies found for this genre",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: `Movies fetched successfully for genre: ${genre}`,
+            data: movies,
+        });
+
+    }catch(error){
+        console.log(error) ;
+        res.status(500).send({
+            success : false , 
+            message : "Error fetching movie by genre"
+        })
+    }
+}
+
+module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies , getMovieByGenre};
