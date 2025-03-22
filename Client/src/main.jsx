@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       <Route path = "/register" element = {<Signup/>} />
       <Route path = "/contact" element = {<Contact/>}/>
       <Route path = "/privacy-policy" element = {<PrivacyPolicy/>} />
-      <Route path="/movie/:title" element={<MovieDetails />} /> {/* Dynamic route */}
+      <Route path="/movie/:id" element={<MovieDetails />} /> {/* Dynamic route */}
       <Route path="/category/:genre" element={<CategoryMoviePage/>} />
       <Route path = "/subscription" element= {<SubscriptionPage/>} />
       {/* <Route path='/movie' element = {<MovieDetails/>} /> */}

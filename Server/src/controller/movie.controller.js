@@ -1,4 +1,6 @@
-const movieModel = require("../models/movie.models.js");
+
+const movieModel = require('../models/movie.models.js') ;
+
 const cloudinary = require("cloudinary").v2;
 const multer = require("multer");
 

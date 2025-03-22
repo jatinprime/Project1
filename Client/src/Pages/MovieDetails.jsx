@@ -2,21 +2,35 @@ import React, { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import MovieData from "../Movies/MovieData";
 import UserContext from "../Context/UserContext";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1" ;
 
 const MovieDetails = () => {
-  const { moviename } = useContext(UserContext);
-  const { title } = useParams(); // Get the movie title from the URL
+  // const { moviename } = useContext(UserContext);
+  const { id } = useParams(); // Get the movie title from the URL
+  const [getMovie, setGetMovie] = useState([])
 
   // Find the movie data based on the title
-  const movie = MovieData.find((movie) => movie.title === title);
-  const remainingMovies = MovieData.filter((movie) => movie.title !== title);
+  
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const { data } = await axios.get(`${API_BASE_URL}/movie/${id}`);
+        setGetMovie(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchMovie();
+  } , [])
+
+  // const remainingMovies = allMovie.filter((movie) => movie.title !== title);
 
   // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!movie) {
+  if (!getMovie) {
     return <p>Movie not found</p>;
   }
 
@@ -27,7 +41,7 @@ const MovieDetails = () => {
         <div
           className="bg-cover bg-center h-full"
           style={{
-            backgroundImage: `url('${movie.imageUrl}')`,
+            backgroundImage: `url('${getMovie.posterUrl}')`,
           }}
         >
           {/* Overlay */}
@@ -37,10 +51,9 @@ const MovieDetails = () => {
         {/* Movie Details */}
         <div className="absolute inset-0 z-10 flex flex-col items-start justify-start px-8 md:px-16 lg:px-24 text-white">
           <div className="mt-[270px]"> {/* Adjust this margin to move the content up or down */}
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{movie.title}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">{getMovie.title}</h1>
             <p className="text-sm md:text-lg mb-6 max-w-lg">
-              This is a short description of the movie. It gives a brief overview of
-              the plot and storyline, enticing viewers to watch it.
+              {getMovie.description}
             </p>
             <div className="flex space-x-4">
               <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">

@@ -157,10 +157,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import MovieCard from "../Components/MovieCard/MovieCard";
 import MovieData from "../Movies/MovieData";
+import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const Home = () => {
     const [opacity, setOpacity] = useState(1);
     const browseRef = useRef(null); // Reference for the "Browse Categories" section
+    const [moviesTitle , setMoviesTitle] = useState([]) ;
+    const [latestMovies, setLatestMovies] = useState([])
 
     const handleBrowseClick = () => {
         if (browseRef.current) {
@@ -173,8 +177,26 @@ const Home = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    const fetchMoviesTitle = async() => {
+        const {data} = await axios.get(`${API_BASE_URL}/movie/getMovieTitle`) ;
+        if(data.success){
+            setMoviesTitle(data.data) ;
+        }
+    }
+
+    const fetchLatestMovies = async() => {
+        const {data} = await axios.get(`${API_BASE_URL}/movie/getLatestMovie`) ;
+        if(data.success){
+            setLatestMovies(data.data) ;
+        }
+    }
+
     // Adjust opacity on scroll
     useEffect(() => {
+
+        fetchMoviesTitle() ;
+        fetchLatestMovies() ;
+
         const handleScroll = () => {
             const scrollY = window.scrollY;
             const newOpacity = Math.max(1 - scrollY / 400, 0);

@@ -126,13 +126,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import MovieData from "../../Movies/MovieData";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+import axios from "axios";
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [scrollSearch, setscrollSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const [filteredMovies, setFilteredMovies] = useState([]); // State for filtered movie suggestions
-  
+  const [allMovies, setAllMovies] = useState([])
+
   const { auth, setAuth } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -153,19 +156,18 @@ const Header = () => {
     }else setscrollSearch(false) ;
   };
 
-  // Update filtered movies based on search query
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setFilteredMovies([]);
-    } else {
-      const filtered = MovieData.filter((movie) =>
-        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setFilteredMovies(filtered);
-    }
-  }, [searchQuery]);
 
-  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const { data } = await axios.get(`${API_BASE_URL}/movie/getMovieTitle`);
+        setAllMovies(data.data);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    }
+    fetchMovies() ;
+
     // Add event listener for scroll
     window.addEventListener("scroll", handleScroll);
 
@@ -175,11 +177,24 @@ const Header = () => {
     };
   }, []);
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value) ;
+
+    if (searchQuery.trim() === "") {
+      setFilteredMovies([]);
+    } else {
+      const filtered = allMovies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
+  }
+
   // Handle navigation to the movie details page
-  const handleMovieClick = (title) => {
+  const handleMovieClick = (id) => {
     setSearchQuery(""); // Clear the search bar
     setFilteredMovies([]); // Clear the suggestions
-    navigate(`/movie/${title}`);
+    navigate(`/movie/${id}`);
   };
 
   return (
@@ -223,7 +238,7 @@ const Header = () => {
             type="text"
             placeholder="Search movies..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearch}
             className={`px-4 py-2 bg-transparent border ${scrollSearch ? 'border-pink-800' : 'border-white'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
           />
           {filteredMovies.length > 0 && (
@@ -232,7 +247,7 @@ const Header = () => {
                 <div
                   key={movie.id}
                   className="px-4 py-2 text-black cursor-pointer border border-none hover:bg-gray-200"
-                  onClick={() => handleMovieClick(movie.title)}
+                  onClick={() => handleMovieClick(movie.id)}
                 >
                   {movie.title}
                   
