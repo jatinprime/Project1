@@ -21,9 +21,9 @@ app.use(cors()) ;
 app.use(morgan("dev")) ;
 app.use(express.json()) ;
 
-//routes
+//routes                
 app.use('/api/v1/' , require('./src/routes/test.routes.js')) ;
-// app.use('/api/v1/user' , require('./src/routes/user.routes.js')) ;
+app.use('/api/v1/user' , require('./src/routes/user.routes.js')) ;
 app.use('/api/v1/movie' , require('./src/routes/movie.routes.js')) ;
 
 const PORT = process.env.PORT || 8000 ;
