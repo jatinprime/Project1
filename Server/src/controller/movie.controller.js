@@ -103,13 +103,17 @@ const addMovie = async (req, res, next) => {
 //controller for get all title for frontend search filter query
 const getAllMovieTitles = async (req, res) => {
     try {
-        const movies = await movieModel.find({}, "moviename"); // Fetch only moviename field
+        const movies = await movieModel.find({}, "moviename _id"); // Fetch only moviename and id field
 
         res.status(200).json({
             success: true,
             message: "Successfully fetched all titles",
-            data: movies.map((movie) => movie.moviename), // Return only an array of titles
+            data: movies.map((movie) => ({
+                id: movie._id,
+                title: movie.moviename,
+            })), // Return an array of objects with id and title
         });
+
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -120,4 +124,55 @@ const getAllMovieTitles = async (req, res) => {
     }
 };
 
-module.exports = { addMovie, getAllMovieTitles };
+//controller for movie recieved by id
+const getSpecificMovieById = async (req, res) => {
+    try {
+        const { id } = req.params;  // Get movie ID from URL
+
+        const movie = await movieModel.findById(id);  // Fetch movie by ID
+
+        // Validate if the movie exists
+        if (!movie) {
+            return res.status(404).json({
+                success: false,
+                message: "Movie not found",
+            });
+        }
+
+        // Successful response
+        res.status(200).json({
+            success: true,
+            data: movie,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: "Error fetching movie",
+            error: error.message
+        });
+    }
+};
+
+//Fetch latest movies
+const getLatestMovies = async (req , res) => {
+    try{
+        const latestMovies = await movieModel.find({}).sort({createdAt : -1}).limit(12) ;
+
+        res.status(200).send({
+            success : true , 
+            message : "Successfully fetched latest 12 movies", 
+            data : latestMovies
+        })
+    }catch(error){
+        console.log(error) ;
+        res.status(500).send({
+            success : false , 
+            message : "Error fetching trending movies" , 
+            error : error.message
+        })
+    }
+}
+
+
+module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies};
