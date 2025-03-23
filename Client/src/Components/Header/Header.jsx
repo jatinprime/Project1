@@ -56,8 +56,13 @@ const Header = () => {
   const handleSearch = (e) => {
     setSearchQuery(e.target.value) ;
 
+    if(e.target.value === ""){
+      setFilteredMovies([]) ;
+    }
+
     if (searchQuery.trim() === "") {
       setFilteredMovies([]);
+      setSearchQuery("") ;
     } else {
       const filtered = allMovies.filter((movie) =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
