@@ -48,6 +48,7 @@ const Home = () => {
             if(data.success){
                 setLatestMovies(data.data) ;
             }
+            console.log(data.data.length) ;
         } catch (error) {
             console.log(error) ;
             toast.error("Failed to load movies!") ;
