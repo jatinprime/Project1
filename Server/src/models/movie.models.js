@@ -17,7 +17,8 @@ const movieSchema = new Schema({
     },
     genre: [{
         type: String, 
-        required: true 
+        required: true ,
+        enum : ["Action" , "Comedy" , "Drama" , "Horror" , "Romance"]
     }],
     releaseDate: { type: Date, required: true },
     reviews: [
@@ -34,7 +35,7 @@ const movieSchema = new Schema({
         type: String ,
         default : "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1500x1500/products/90301/98769/the-creator-original-movie-poster-one-sheet-final-style-buy-now-at-starstills__81077.1697644483.jpg?c=2"
     },
-    availableFormats: [{ type: String, enum: ["HD", "Full HD", "4K"]}],
+    availableFormats: [{ type: String, enum: ["HD", "Full HD", "4K"] , default : "HD"}],
 }, {
     timestamps : true
 })
