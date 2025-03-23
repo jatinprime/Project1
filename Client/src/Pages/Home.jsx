@@ -29,18 +29,18 @@ const Home = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const fetchMoviesTitle = async() => {
-        try {
-            const {data} = await axios.get(`${API_BASE_URL}/movie/getMovieTitle`) ;
-            if(data.success){
-                setMoviesTitle(data.data) ;
-            }
-        } catch (error) {
-            console.log(error) ;
-            toast.error("Failed to load movies!") ;
-            navigate('/server/server-error') ;
-        }
-    }
+    // const fetchMoviesTitle = async() => {
+    //     try {
+    //         const {data} = await axios.get(`${API_BASE_URL}/movie/getMovieTitle`) ;
+    //         if(data.success){
+    //             setMoviesTitle(data.data) ;
+    //         }
+    //     } catch (error) {
+    //         console.log(error) ;
+    //         toast.error("Failed to load movies!") ;
+    //         navigate('/server/server-error') ;
+    //     }
+    // }
 
     const fetchLatestMovies = async() => {
         try {
