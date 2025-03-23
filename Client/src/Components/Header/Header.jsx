@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
-import MovieData from "../../Movies/MovieData";
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 import axios from "axios";
 
@@ -55,21 +54,19 @@ const Header = () => {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value) ;
+  };
 
-    if(e.target.value === ""){
-      setFilteredMovies([]) ;
-    }
-
-    if (searchQuery.trim() === "") {
+  useEffect(() => {
+    if(searchQuery.trim() === "") {
       setFilteredMovies([]);
-      setSearchQuery("") ;
+      return ;
     } else {
       const filtered = allMovies.filter((movie) =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredMovies(filtered);
     }
-  }
+  } , [searchQuery])
 
   // Handle navigation to the movie details page
   const handleMovieClick = (id) => {
