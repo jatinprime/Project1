@@ -1,0 +1,35 @@
+
+
+{
+    "workbench.colorTheme": "Andromeda",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "line-thin",
+    "editor.renderWhitespace": "selection",
+    "editor.renderLineHighlight": "all",
+
+    "editor.tokenColorCustomizations": {
+        "comments": "#41ffb3", 
+        "strings": "#ffcc00", 
+        "keywords": "#ff3e98", 
+        "functions": "#00eaff", 
+        "variables": "#ff7931", 
+        "numbers": "#73ff00", 
+        "operators": "#ffffff"
+    },
+
+    "workbench.colorCustomizations": {
+        "editor.background": "#0b0c10",
+        "editor.foreground": "#c5c6c7",
+        "editorCursor.foreground": "#66ffcc",
+        "editor.lineHighlightBackground": "#1f2833",
+        "editor.selectionBackground": "#45a29e66",
+        "terminal.background": "#0b0c10",
+        "terminal.foreground": "#66ffcc",
+        "activityBar.background": "#1f2833",
+        "sideBar.background": "#0b0c10",
+        "statusBar.background": "#0b0c10",
+        "statusBar.foreground": "#ffffff"
+    }
+}

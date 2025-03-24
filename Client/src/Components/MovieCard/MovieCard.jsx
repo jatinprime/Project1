@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 
-const MovieCard = ({ id, key , title, imageUrl }) => {
+const MovieCard = ({ id, title, imageUrl }) => {
     const navigate = useNavigate(); // useNavigate inside the component
     const { setMoviename } = useContext(UserContext);
 
