@@ -23,7 +23,7 @@ const MovieDetails = () => {
             }
         };
         fetchMovie();
-    }, []);
+    }, [id]);
 
     // const remainingMovies = allMovie.filter((movie) => movie.title !== title);
 
