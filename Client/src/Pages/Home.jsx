@@ -17,6 +17,8 @@ const Home = () => {
     // const [moviesTitle , setMoviesTitle] = useState([]) ;
     const [latestMovies, setLatestMovies] = useState([]) ;
     const navigate = useNavigate() ;
+    let firstHalf = latestMovies.slice(0, 6);
+    let secondHalf = latestMovies.slice(6, 12);
 
     const handleBrowseClick = () => {
         if (browseRef.current) {
@@ -48,7 +50,10 @@ const Home = () => {
             if(data.success){
                 setLatestMovies(data.data) ;
             }
-            console.log(data.data.length) ;
+            firstHalf = latestMovies.slice(0, 6);
+            secondHalf = latestMovies.slice(6, 12);
+            // console.log(data.data.length) ;
+            // console.log(data.data) ;   for debugging :)
         } catch (error) {
             console.log(error) ;
             toast.error("Failed to load movies!") ;
@@ -115,7 +120,7 @@ const Home = () => {
                 </h2>
                 <div className="relative overflow-x-clip">
                     <div className="flex space-x-6 animate-scroll w-[123.5%]">
-                        {latestMovies.map((movie) => (
+                        {firstHalf.map((movie) => (
                             <MovieCard
                                 id={movie._id}
                                 key={movie._id}
@@ -123,12 +128,12 @@ const Home = () => {
                                 imageUrl={movie.posterUrl}
                             />
                         ))}
-                        {latestMovies.map((movie) => (
+                        {firstHalf.map((movie) => (
                             <MovieCard
                                 id={movie._id}
                                 key={`second-${movie._id}`}
-                                title={movie.title}
-                                imageUrl={movie.imageUrl}
+                                title={movie.moviename}
+                                imageUrl={movie.posterUrl}
                             />
                         ))}
                     </div>
@@ -139,7 +144,7 @@ const Home = () => {
             <section className="py-1">
                 <div className="relative overflow-x-clip">
                     <div className="flex space-x-6 animate-reverseScroll w-[123.5%]">
-                        {latestMovies.map((movie) => (
+                        {secondHalf.map((movie) => (
                             <MovieCard
                             id={movie._id}
                             key={movie._id}
@@ -147,12 +152,12 @@ const Home = () => {
                             imageUrl={movie.posterUrl}
                             />
                         ))}
-                        {latestMovies.map((movie) => (
+                        {secondHalf.map((movie) => (
                             <MovieCard
                             id={movie._id}
                             key={`second-${movie._id}`}
-                            title={movie.title}
-                            imageUrl={movie.imageUrl}
+                            title={movie.moviename}
+                            imageUrl={movie.posterUrl}
                             />
                         ))}
                     </div>
@@ -170,7 +175,7 @@ const Home = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     {categories.map((category) => (
                         <NavLink
-                            to={`/category/${category.toLowerCase()}`}
+                            to={`/category/${category}`}
                             key={category}
                             className="relative bg-pink-900 rounded-lg p-4 text-center text-2xl shadow-lg transition-all transform hover:scale-105 hover:shadow-xl hover:bg-gradient-to-r from-pink-600 to-pink-950"
                             style={{
