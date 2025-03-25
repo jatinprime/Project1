@@ -152,7 +152,6 @@ const logoutUserController = async (req , res) => {
     }
 }
 
-module.exports = { registerUserController, loginUserController , logoutUserController };
 const getMyProfile = async(req , res) => {
     try {
         const id = req.user.id ;
@@ -167,4 +166,4 @@ const getMyProfile = async(req , res) => {
     }
 }
 
-module.exports = { registerUserController, loginUserController , getMyProfile};
+module.exports = { registerUserController, loginUserController , getMyProfile , logoutUserController};
