@@ -1,6 +1,6 @@
 const userModels = require("../models/user.models");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const JWT = require("jsonwebtoken");
 
 const cookieOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, //7days
@@ -44,6 +44,16 @@ const registerUserController = async (req, res) => {
 
         //now we have to save new user formed
         await newUser.save();
+
+        //generate JWT token
+        const token = JWT.sign(
+            {userId : newUser._id , role : newUser.role , subscription : newUser.subscription},
+            process.env.JWT_SECRET,
+            { expiresIn: "2d" }
+        )
+
+        //Sending token in cookie
+        res.cookie("token" , token , cookieOptions) ;
 
         res.status(201).send({
             success: true,
@@ -93,13 +103,14 @@ const loginUserController = async (req, res) => {
 
         user.password = undefined;
 
-        //Generate jwt token
-        const token = jwt.sign(
-            { userId: user._id },
+        //Generate JWT token
+        const token = JWT.sign(
+            { userId: user._id , role : user.role , subscription : user.subscription },
             process.env.JWT_SECRET,
             { expiresIn: "2d" } // Token expiry
         );
 
+        //Send token in cookie
         res.cookie("token", token, cookieOptions);
 
         res.status(200).send({
@@ -117,6 +128,31 @@ const loginUserController = async (req, res) => {
     }
 };
 
+const logoutUserController = async (req , res) => {
+    try{
+        //Clearing the cookie
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+        });
+
+        //do not forget to reload the page after logout in frontend
+        return res.status(200).send({
+            success : true , 
+            message : "logged out successfully" 
+        })
+    }catch(error){
+        console.log("Logout error : ", error) ;
+        res.status(500).send({
+            success : false , 
+            message : "Error in Logout API Controller" ,
+            error : error.message
+        })
+    }
+}
+
+module.exports = { registerUserController, loginUserController , logoutUserController };
 const getMyProfile = async(req , res) => {
     try {
         const id = req.user.id ;

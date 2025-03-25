@@ -1,12 +1,11 @@
 
 const movieModel = require('../models/movie.models.js') ;
-
 const cloudinary = require("cloudinary").v2;
 const multer = require("multer");
 
 const addMovie = async (req, res, next) => {
     try {
-        let {
+        const {
             moviename,
             description,
             genre,
@@ -22,12 +21,6 @@ const addMovie = async (req, res, next) => {
                 message: "All fields are required",
             });
         }
-
-        // console.log("Genre:", genre);
-        if (typeof genre === "string") {
-            genre = JSON.parse(genre); // Convert from string to array
-        }
-        // console.log("Genre:", genre);
 
         const movieExist = await movieModel.findOne({ moviename });
         if (movieExist) {
@@ -214,30 +207,31 @@ const getMovieByGenre = async(req , res) => {
     }
 }
 
-const movieUpdate = async (req , res) => {
-    const {id} = req.params ;
-    const { moviename , description , genre } = req.body ;
-    try {
-        const movie = await movieModel.findByIdAndUpdate(
-            id , 
-            {moviename , description , genre} , 
-            {new : true , runValidation : true})
+const deleteMovie = async (req , res) => {
+    try{
+        const {id} = req.params ; 
+
+        const movie = await movieModel.findById(id) ;
+
         if(!movie){
-            return res.status(404).json({
-                success : false , 
+            return res.status(404).send({
+                success : false ,
                 message : "Movie not found"
             })
         }
-        return (200).json({
-            success :true ,
-            message : "Movie updated successfullt",
-            data : movie
+
+
+        const deletedMovie = await movieModel.findByIdAndDelete(id) ;
+
+        return res.status(200).send({
+            success : true , 
+            message : "Movie Deleted Successfully"
         })
     }catch(error){
-        console.log(error) ;
-        res.status(500).json({
-            success : false,
-            message : "Error in updating movies"
+        console.log(error) ; 
+        res.status(500).send({
+            success : false , 
+            message : "Error in Deleting Movie"
         })
     }
 }
