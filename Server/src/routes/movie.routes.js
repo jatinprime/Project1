@@ -1,8 +1,7 @@
 const express = require('express') ;
-const { addMovie, getAllMovieTitles, getSpecificMovieById, getLatestMovies, getMovieByGenre, movieUpdate } = require('../controller/movie.controller.js');
+const { addMovie, getAllMovieTitles, getSpecificMovieById, getLatestMovies, getMovieByGenre, movieUpdate, deleteMovie } = require('../controller/movie.controller.js');
 const upload = require("../middleware/multer.middleware.js");
 const { isLoggedIn, isAdmin } = require('../middleware/auth.middleware.js');
-
 
 const router = express.Router() ;
 // console.log("Upload Middleware:", upload);
@@ -22,6 +21,10 @@ router.get('/getLatestMovie' , getLatestMovies) ;
 //Movie Controller based on category
 router.get('/getMovieByGenre/:genre' , getMovieByGenre) ;
 
+//UPDATE MOVIE
 router.put('/updateMovie' , isLoggedIn , isAdmin , movieUpdate) ;
+
+//DELETE MOVIE
+router.delete('/deleteMovie/:id' , isLoggedIn , isAdmin , deleteMovie) ;
 
 module.exports = router ;
