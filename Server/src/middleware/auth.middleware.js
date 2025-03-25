@@ -24,4 +24,4 @@ const isAdmin = (req, res, next) => {
     next() ;
 };
 
-module.exports = {isLoggedIn , isAdmin} ;
+module.exports = {isLoggedIn , isAdmin} ; 
