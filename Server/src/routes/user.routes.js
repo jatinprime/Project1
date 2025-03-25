@@ -1,6 +1,5 @@
 const express = require('express') ;
-const { registerUserController, loginUserController, logoutUserController } = require('../controller/user.controller');
-const { registerUserController, loginUserController, getMyProfile } = require('../controller/user.controller.js');
+const { registerUserController, loginUserController, logoutUserController , getMyProfile } = require('../controller/user.controller');
 const { isLoggedIn } = require('../middleware/auth.middleware.js');
 
 

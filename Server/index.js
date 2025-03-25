@@ -4,6 +4,7 @@ const colors = require('colors') ;
 const morgan = require('morgan') ;
 const cors = require('cors') ;
 const connectDb = require('./src/config/db');
+const cookieParser = require('cookie-parser');
 const cloudinary = require("cloudinary").v2;
 
 
@@ -20,6 +21,7 @@ connectDb() ;
 app.use(cors()) ;
 app.use(morgan("dev")) ;
 app.use(express.json()) ;
+app.use(cookieParser());        
 
 //routes                
 app.use('/api/v1/' , require('./src/routes/test.routes.js')) ;

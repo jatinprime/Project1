@@ -1,17 +1,28 @@
 const jwt = require('jsonwebtoken') ;
 
 const isLoggedIn = (req , res , next) => {
-    const token = (req.cookies && req.cookies.token) || null ;
-    if(!token){
-        return res.status(401).json({
-            success : false ,
-            message : "you need to signin to access this route"
-        })
-    }
+    try {
+        const token = (req.cookies && req.cookies.token) || null;
+        console.log(token);
 
-    const decoded = jwt.verify(token , process.env.JWT_SECRET) ;
-    req.user = decoded ;
-    next() ;
+        if (!token) {
+            return res.status(401).json({
+                success: false,
+                message: "You need to sign in to access this route",
+            });
+        }
+
+        // Verify token and handle errors
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+
+        next(); // Move to the next middleware
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid or expired token. Please sign in again.",
+        });
+    }
 }
 
 const isAdmin = (req, res, next) => {
