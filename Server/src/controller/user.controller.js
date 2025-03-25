@@ -153,3 +153,18 @@ const logoutUserController = async (req , res) => {
 }
 
 module.exports = { registerUserController, loginUserController , logoutUserController };
+const getMyProfile = async(req , res) => {
+    try {
+        const id = req.user.id ;
+        const user = await userModels.findById({id}) ;
+        return res.status(200).json({
+            success : true ,
+            message : "User Profile Fetched Successfully",
+            user
+        })
+    } catch (error) {
+        console.log("error in fetching user details : " , error) ;
+    }
+}
+
+module.exports = { registerUserController, loginUserController , getMyProfile};
