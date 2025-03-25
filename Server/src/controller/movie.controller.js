@@ -215,20 +215,11 @@ const deleteMovie = async (req , res) => {
 
         if(!movie){
             return res.status(404).send({
-const movieUpdate = async (req , res) => {
-    const {id} = req.params ;
-    const { moviename , description , genre } = req.body ;
-    try {
-        const movie = await movieModel.findByIdAndUpdate(
-            id , 
-            {moviename , description , genre} , 
-            {new : true , runValidation : true})
-        if(!movie){
-            return res.status(404).json({
-                success : false , 
+                success : false ,
                 message : "Movie not found"
             })
         }
+
 
         const deletedMovie = await movieModel.findByIdAndDelete(id) ;
 
@@ -241,19 +232,8 @@ const movieUpdate = async (req , res) => {
         res.status(500).send({
             success : false , 
             message : "Error in Deleting Movie"
-        return (200).json({
-            success :true ,
-            message : "Movie updated successfullt",
-            data : movie
-        })
-    }catch(error){
-        console.log(error) ;
-        res.status(500).json({
-            success : false,
-            message : "Error in updating movies"
         })
     }
 }
 
-module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies , getMovieByGenre};
 module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies , getMovieByGenre , movieUpdate};
