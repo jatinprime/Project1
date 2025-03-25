@@ -19,6 +19,7 @@ import MovieDetails from "./Pages/MovieDetails";
 import CategoryMoviePage from "./Pages/CategoryMoviePage.jsx";
 import SubscriptionPage from "./Pages/SubscriptionPage.jsx";
 import InternalServerError from "./Pages/InternalServerError.jsx";
+import AddMovie from "./Pages/AddMovie";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
             {/* Dynamic route */}
             <Route path="/category/:genre" element={<CategoryMoviePage />} />
             <Route path="/subscription" element={<SubscriptionPage />} />
+            <Route path="/addmovie" element={<AddMovie />} />
             {/* <Route path='/movie' element = {<MovieDetails/>} /> */}
             <Route
                 path="/server/server-error"

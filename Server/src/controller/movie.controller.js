@@ -6,7 +6,7 @@ const multer = require("multer");
 
 const addMovie = async (req, res, next) => {
     try {
-        const {
+        let {
             moviename,
             description,
             genre,
@@ -22,6 +22,12 @@ const addMovie = async (req, res, next) => {
                 message: "All fields are required",
             });
         }
+
+        // console.log("Genre:", genre);
+        if (typeof genre === "string") {
+            genre = JSON.parse(genre); // Convert from string to array
+        }
+        // console.log("Genre:", genre);
 
         const movieExist = await movieModel.findOne({ moviename });
         if (movieExist) {

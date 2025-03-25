@@ -7,8 +7,8 @@ import axios from "axios";
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [scrollSearch, setscrollSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // State for search input
-  const [filteredMovies, setFilteredMovies] = useState([]); // State for filtered movie suggestions
+  const [searchQuery, setSearchQuery] = useState(""); 
+  const [filteredMovies, setFilteredMovies] = useState([]); 
   const [allMovies, setAllMovies] = useState([])
 
   const { auth, setAuth } = useContext(UserContext);
