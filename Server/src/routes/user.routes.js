@@ -10,8 +10,8 @@ const router = express.Router() ;
 //routes
 router.post('/register' , registerUserController) ;
 router.post('/login' , loginUserController) ;
-router.get('/logout' , logoutUserController) ;
-router.get('/me' , isLoggedIn , getMyProfile)
+router.get('/logout' , isLoggedIn , logoutUserController) ;
+router.get('/me' , isLoggedIn , getMyProfile) ;
 
 //export router
 module.exports = router ;

@@ -264,4 +264,4 @@ const movieUpdate = async (req , res) => {
     }
 }
 
-module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies , getMovieByGenre , movieUpdate};
+module.exports = { addMovie, getAllMovieTitles , getSpecificMovieById , getLatestMovies , getMovieByGenre , movieUpdate , deleteMovie};
