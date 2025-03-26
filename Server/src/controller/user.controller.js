@@ -1,6 +1,7 @@
 const userModels = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
+const cloudinary = require("cloudinary") ;
 
 const cookieOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, //7days
@@ -33,13 +34,30 @@ const registerUserController = async (req, res) => {
         const salt = bcrypt.genSaltSync(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
+        // Upload avatar if provided
+        let avatarUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT53amOASh6bWQsY-uCLtDjqnm9QizAhU7N4g&s"; // Default avatar
+        if (files?.avatar && files.avatar[0]) {
+            const avatarUpload = await new Promise((resolve, reject) => {
+                const stream = cloudinary.uploader.upload_stream(
+                    { folder: "user_avatars", resource_type: "image" },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else resolve(result);
+                    }
+                );
+                stream.end(files.avatar[0].buffer);
+            });
+
+            avatarUrl = avatarUpload.secure_url; // Store uploaded image URL
+        }
+
         //now everything is fine (CREATE A NEW USER)
         const newUser = await userModels.create({
             username,
             email,
             age,
             password: hashedPassword,
-            avatar,
+            avatar: avatarUrl,
         });
 
         //now we have to save new user formed
