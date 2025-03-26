@@ -1,6 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserContext from "../Context/UserContext";
+import {BsPersonCircle} from "react-icons/bs"
+import axios from "axios";
+import { toast } from "react-hot-toast";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const Signup = () => {
   const { setAuth } = useContext(UserContext);
@@ -8,6 +12,7 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    avatar: null,
   });
 
   const [focused, setFocused] = useState({
@@ -16,15 +21,47 @@ const Signup = () => {
     password: false,
   });
 
+  const [loading, setLoading] = useState(false)
+
+  const [preview, setPreview] = useState(null);
   const navigate = useNavigate();
+  const fileInputRef = React.useRef(null);
 
   const handleFocus = (field, state) => {
     setFocused((prev) => ({ ...prev, [field]: state }));
   };
 
-  const handleSubmit = (e) => {
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, avatar: file });
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleSubmit = async(e) => {
     e.preventDefault(); // Prevent the page from reloading
-    setAuth(true);
+    const loadingToast = toast.loading("Signing up...");
+    try {
+      const response = await axios.post(`${API_BASE_URL}/user/register`,
+      formData,
+      {
+        headers : {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      if (response.status === 201) {
+        toast.success("Signup successful!", { id: loadingToast, duration: 2000 });
+        setAuth(true);
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Signup failed! Please try again.", { id: loadingToast, duration: 2000 });
+    }
 
     // Process the form data (e.g., send to an API)
     console.log("Form submitted with:", formData);
@@ -34,8 +71,8 @@ const Signup = () => {
       username: "",
       email: "",
       password: "",
+      avatar: null 
     });
-    navigate("/");
   };
 
   const handleChange = (e) => {
@@ -60,6 +97,14 @@ const Signup = () => {
         <NavLink to="/">My Logo</NavLink>
       </h1>
       <div className="backdrop-blur-md bg-white/20 p-10 rounded-xl border border-white shadow-xl w-full max-w-md">
+      <div className="flex flex-col items-center mb-6" onClick={handleImageClick} style={{ cursor: "pointer" }}>
+          {preview ? (
+            <img src={preview} alt="avatar" className="w-24 h-24 rounded-full object-cover border-2 border-white" />
+          ) : (
+            <BsPersonCircle className="text-white text-6xl" />
+          )}
+          <input type="file" accept="image/*" onChange={handleImageChange} ref={fileInputRef} hidden />
+        </div>
         <h1 className="text-3xl font-extrabold text-center text-white mb-10">
           Signup
         </h1>
