@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
+import toast from "react-hot-toast"
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 import axios from "axios";
 
@@ -16,6 +17,17 @@ const Header = () => {
 
   const handleProClick = () =>{
     navigate('/subscription') ;
+  }
+
+  const handleLogout = async() => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/user/logout`, {withCredentials : true})
+      toast.success("Logged Out")
+      setAuth(false)
+      navigate('/') ;
+    } catch (error) {
+      toast.error(error.resonse?.data?.message || "Something went wrong") ;
+    }
   }
 
   // Handle the scroll event to change the navbar style
@@ -188,7 +200,7 @@ const Header = () => {
 
           {auth && (
             <button
-              onClick={() => setAuth(false)} // Set auth to false on logout
+              onClick={handleLogout} // Set auth to false on logout
               className="text-white hover:text-blue-500 font-semibold bg-transparent border-none cursor-pointer"
             >
               Logout
