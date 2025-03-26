@@ -19,6 +19,7 @@ const registerUserController = async (req, res) => {
                 message: "Plz provide All fields",
             });
         }
+        const files = req.file;
 
         //checking for the existing user
         const existingUser = await userModels.findOne({ email });
