@@ -8,6 +8,8 @@ const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const Signup = () => {
   const { setAuth } = useContext(UserContext);
+  const { setRole } = useContext(UserContext) ;
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -54,9 +56,10 @@ const Signup = () => {
           "Content-Type": "multipart/form-data"
         }
       })
-      if (response.status === 201) {
+      if (response.data.success) {
         toast.success("Signup successful!", { id: loadingToast, duration: 2000 });
         setAuth(true);
+        setRole(response.data.user.role) ;
         navigate("/");
       }
     } catch (error) {

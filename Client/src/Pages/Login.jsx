@@ -7,6 +7,8 @@ import toast from "react-hot-toast" ;
 
 const Login = () => {
   const { setAuth } = useContext(UserContext);
+  const { setRole } = useContext(UserContext) ;
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -56,6 +58,8 @@ const Login = () => {
       }) ;
 
       setAuth(true) ;
+      setRole(res.data.user.role) ;
+
       navigate("/") ;
 
 
@@ -65,11 +69,6 @@ const Login = () => {
         id : loadingToast
       })
     }
-
-
-
-
-
 
   };
 
