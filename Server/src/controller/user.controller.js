@@ -74,6 +74,8 @@ const registerUserController = async (req, res) => {
         //Sending token in cookie
         res.cookie("token" , token , cookieOptions) ;
 
+        user.password = undefined ;
+
         res.status(201).send({
             success: true,
             message: "User Created Successfully",
