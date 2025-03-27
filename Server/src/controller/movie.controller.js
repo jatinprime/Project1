@@ -250,7 +250,7 @@ const movieUpdate = async (req , res) => {
                 message : "Movie not found"
             })
         }
-        return (200).json({
+        return res.status(200).send({
             success :true ,
             message : "Movie updated successfullt",
             data : movie

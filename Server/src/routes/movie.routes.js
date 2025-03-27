@@ -22,7 +22,7 @@ router.get('/getLatestMovie' , getLatestMovies) ;
 router.get('/getMovieByGenre/:genre' , getMovieByGenre) ;
 
 //UPDATE MOVIE
-router.put('/updateMovie' , isLoggedIn , isAdmin , movieUpdate) ;
+router.put('/updateMovie/:id' , isLoggedIn , isAdmin , movieUpdate) ;
 
 //DELETE MOVIE
 router.delete('/deleteMovie/:id' , isLoggedIn , isAdmin , deleteMovie) ;

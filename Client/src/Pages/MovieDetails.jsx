@@ -1,17 +1,32 @@
-import { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams} from "react-router-dom";
 // import MovieData from "../Movies/MovieData";
 // import UserContext from "../Context/UserContext";
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 import axios from "axios";
+import UserContext from "../Context/UserContext";
+import toast from "react-hot-toast";
 
 const MovieDetails = () => {
     // const { moviename } = useContext(UserContext);
     const { id } = useParams(); // Get the movie title from the URL
+    const navigate = useNavigate() ;
+
     const [getMovie, setGetMovie] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false) ;
 
+     
+
+
     // Find the movie data based on the title
+    const {auth , role} = useContext(UserContext) ;
+
+
+    useEffect(() => {
+        if (!auth) {
+            navigate("/login" , { replace: true });
+        }
+    }, [navigate]);
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -24,6 +39,27 @@ const MovieDetails = () => {
         };
         fetchMovie();
     }, [id]);
+
+    const handleDelete = async() => {
+        const LoadingToast = toast.loading("deleting movie....") ;
+        try {
+            const response = await axios.delete(`${API_BASE_URL}/movie/deleteMovie/${id}`) ;
+            if(response.data.success){
+                toast.success(response.data.message , {id: LoadingToast}) 
+                navigate('/')
+                window.location.reload();
+            }else{
+                toast.error(response.data.message , {id: LoadingToast})
+            }
+        } catch (error) {
+            // console.log(error)
+            toast.error(error.response?.data?.message || "Something Went Wrong" , {id : LoadingToast})
+        }
+    }
+
+    const handleEditClick = () => {
+        navigate(`/editmovie/${id}`) ;
+    }
 
     // const remainingMovies = allMovie.filter((movie) => movie.title !== title);
 
@@ -78,12 +114,26 @@ const MovieDetails = () => {
                     <div className="flex space-x-4">
                         <button 
                             onClick={() => setIsPlaying(true)}
-                        className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">
                             ▶ Play
                         </button>
                         <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base">
                             Details
                         </button>
+                        {(role === "ADMIN") && 
+                            <>
+                                <button 
+                                onClick={handleEditClick}
+                            className="bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">
+                                Edit
+                            </button>
+                            <button 
+                                onClick={handleDelete}
+                            className="bg-red-900 hover:bg-red-950 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">
+                                Delete
+                            </button>
+                            </>
+                        }
                     </div>
                 </div>
             </div>

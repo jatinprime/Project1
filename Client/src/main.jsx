@@ -20,6 +20,7 @@ import CategoryMoviePage from "./Pages/CategoryMoviePage.jsx";
 import SubscriptionPage from "./Pages/SubscriptionPage.jsx";
 import InternalServerError from "./Pages/InternalServerError.jsx";
 import AddMovie from "./Pages/AddMovie";
+import EditMovie from "./Pages/EditMovie";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,11 +31,12 @@ const router = createBrowserRouter(
             <Route path="/register" element={<Signup />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/movie/:id" element={<MovieDetails />} />{" "}
+            <Route path="/movie/:id" element={<MovieDetails />} />
             {/* Dynamic route */}
             <Route path="/category/:genre" element={<CategoryMoviePage />} />
             <Route path="/subscription" element={<SubscriptionPage />} />
             <Route path="/addmovie" element={<AddMovie />} />
+            <Route path="/editmovie/:id" element={<EditMovie />} />
             {/* <Route path='/movie' element = {<MovieDetails/>} /> */}
             <Route
                 path="/server/server-error"
