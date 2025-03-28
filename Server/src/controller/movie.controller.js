@@ -267,7 +267,7 @@ const movieUpdate = async (req , res) => {
         console.log(movie.description)
         return res.status(200).send({
             success :true ,
-            message : "Movie updated successfullt",
+            message : "Movie updated successfully",
             data : movie
         })
     }catch(error){

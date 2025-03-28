@@ -22,7 +22,7 @@
     "workbench.colorCustomizations": {
         "editor.background": "#0b0c10",
         "editor.foreground": "#c5c6c7",
-        "editorCursor.foreground": "#66ffcc",
+        "editorCursor.foreground": "#1545e4",
         "editor.lineHighlightBackground": "#1f2833",
         "editor.selectionBackground": "#45a29e66",
         "terminal.background": "#0b0c10",
