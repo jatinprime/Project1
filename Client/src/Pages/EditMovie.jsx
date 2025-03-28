@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
@@ -8,7 +8,12 @@ const EditMovie = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const genreOptions = ["Action", "Comedy", "Drama", "Horror", "Romance"];
-
+    useEffect(() => {
+        const role = localStorage.getItem("role");  // Retrieve role from local storage
+        if (role !== "ADMIN") {
+            navigate("/denied");  // Redirect if role is not ADMIN
+        }
+    }, []);
     const [movieData, setMovieData] = useState({
         moviename: "",
         description: "",

@@ -1,8 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const AddMovie = () => {
+    const navigate = useNavigate() ;
+    useEffect(() => {
+        const role = localStorage.getItem("role");  // Retrieve role from local storage
+        if (role !== "ADMIN") {
+            navigate("/denied");  // Redirect if role is not ADMIN
+        }
+    }, []);
 
     const genreOptions = ["Action", "Comedy", "Drama", "Horror", "Romance"];
 
