@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import UserContext from "../Context/UserContext";
 import {BsPersonCircle} from "react-icons/bs"
@@ -7,8 +7,14 @@ import { toast } from "react-hot-toast";
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const Signup = () => {
-  const { setAuth } = useContext(UserContext);
+  const { auth , setAuth } = useContext(UserContext);
   const { setRole } = useContext(UserContext) ;
+
+  useEffect(() => {
+    if(auth === true){
+      navigate('/') ;
+    }
+  },[])
 
   const [formData, setFormData] = useState({
     username: "",
@@ -63,7 +69,7 @@ const Signup = () => {
         navigate("/");
       }
     } catch (error) {
-      toast.error("Signup failed! Please try again.", { id: loadingToast, duration: 2000 });
+      toast.error(error.response?.data?.message , { id: loadingToast, duration: 2000 });
     }
 
     // Process the form data (e.g., send to an API)

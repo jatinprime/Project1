@@ -1,13 +1,19 @@
 /* eslint-disable */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../Context/UserContext";
 import axios from "axios" ;
 import toast from "react-hot-toast" ;
 
 const Login = () => {
-  const { setAuth } = useContext(UserContext);
+  const { auth , setAuth } = useContext(UserContext);
   const { setRole } = useContext(UserContext) ;
+
+  useEffect(() => {
+      if(auth === true){
+        navigate('/') ;
+      }
+    },[])
 
   const navigate = useNavigate();
 

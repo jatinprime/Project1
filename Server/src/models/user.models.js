@@ -4,7 +4,7 @@ const userSchema = new Schema({
     username : {
         type: String,
         required : [true , "username is required"],
-        unique: true,
+        // unique: true,
         trim: true
     },
     email: {
@@ -12,7 +12,14 @@ const userSchema = new Schema({
         required : [true , "email is required"],
         unique: true,
         lowercase: true,
-        trim : true
+        trim : true,
+        // validate: {
+        //     validator: function (email) {
+        //         return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+        //     },
+        //     message: "Invalid email format. Please enter a complete email."
+        // }
+        match: [ /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format" ]
     },
     age: {
         type: Number,

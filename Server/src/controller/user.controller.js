@@ -19,6 +19,8 @@ const registerUserController = async (req, res) => {
                 message: "Plz provide All fields",
             });
         }
+
+
         const files = req.file;
 
         //checking for the existing user
@@ -74,7 +76,7 @@ const registerUserController = async (req, res) => {
         //Sending token in cookie
         res.cookie("token" , token , cookieOptions) ;
 
-        user.password = undefined ;
+        newUser.password = undefined ;
 
         res.status(201).send({
             success: true,
@@ -82,10 +84,10 @@ const registerUserController = async (req, res) => {
             user: newUser,
         });
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(300).send({
             success: false,
-            message: "Error while creating User",
+            message: error?.message || "Error while creating user",
         });
     }
 };
