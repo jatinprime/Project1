@@ -238,18 +238,33 @@ const deleteMovie = async (req , res) => {
 
 const movieUpdate = async (req , res) => {
     const {id} = req.params ;
-    const { moviename , description , genre } = req.body ;
+    let { moviename , description , genre } = req.body ;
     try {
+        console.log(description) ;
+
+        const updates = {} ;
+        if (moviename) updates.moviename = moviename;
+        if (description) updates.description = description;
+        // if (genre && genre.length > 0) updates.genre = genre;
+
+        genre = JSON.parse(genre); 
+        if (genre.length > 0) {
+            updates.genre = genre ;
+        }
+
         const movie = await movieModel.findByIdAndUpdate(
             id , 
-            {moviename , description , genre} , 
+            {$set : updates} , 
             {new : true , runValidation : true})
+
+            
         if(!movie){
             return res.status(404).json({
                 success : false , 
                 message : "Movie not found"
             })
         }
+        console.log(movie.description)
         return res.status(200).send({
             success :true ,
             message : "Movie updated successfullt",
