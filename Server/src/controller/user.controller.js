@@ -1,7 +1,9 @@
 const userModels = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
-const cloudinary = require("cloudinary") ;
+const cloudinary = require("cloudinary").v2 ;
+const multer = require("multer");
+
 
 const cookieOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, //7days
@@ -39,7 +41,7 @@ const registerUserController = async (req, res) => {
 
         // Upload avatar if provided
         let avatarUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT53amOASh6bWQsY-uCLtDjqnm9QizAhU7N4g&s"; // Default avatar
-        if (files?.avatar && files.avatar[0]) {
+        if (files) {
             const avatarUpload = await new Promise((resolve, reject) => {
                 const stream = cloudinary.uploader.upload_stream(
                     { folder: "user_avatars", resource_type: "image" },
@@ -48,7 +50,7 @@ const registerUserController = async (req, res) => {
                         else resolve(result);
                     }
                 );
-                stream.end(files.avatar[0].buffer);
+                stream.end(files.buffer);
             });
 
             avatarUrl = avatarUpload.secure_url; // Store uploaded image URL

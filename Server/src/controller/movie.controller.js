@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const addMovie = async (req, res, next) => {
     try {
-        const {
+        let {
             moviename,
             description,
             genre,
@@ -14,7 +14,7 @@ const addMovie = async (req, res, next) => {
             posterUrl,
             availableFormats,
         } = req.body;
-
+        genre = JSON.parse(genre); 
         if (!moviename || !description || !genre || !releaseDate) {
             return res.status(400).json({
                 success: false,
@@ -70,6 +70,7 @@ const addMovie = async (req, res, next) => {
             posterUrl: posterUpload.secure_url,
             availableFormats,
         });
+        console.log(genre) ;
 
         if (!movie) {
             return res.status(400).json({
