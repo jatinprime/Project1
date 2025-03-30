@@ -1,5 +1,6 @@
 const userModels = require("../models/user.models");
 const bcrypt = require("bcryptjs");
+const { json } = require("express");
 const JWT = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2 ;
 const multer = require("multer");
@@ -65,7 +66,7 @@ const registerUserController = async (req, res) => {
             avatar: avatarUrl,
         });
 
-        //now we have to save new user formed
+        //now we have to save new user formed``
         await newUser.save();
 
         //generate JWT token
@@ -179,8 +180,11 @@ const logoutUserController = async (req , res) => {
 
 const getMyProfile = async(req , res) => {
     try {
-        const id = req.user.id ;
-        const user = await userModels.findById({id}) ;
+        const id = req.user.userId ;
+
+        console.log(id) ;
+        const user = await userModels.findById(id) ;
+        console.log(user)
         return res.status(200).json({
             success : true ,
             message : "User Profile Fetched Successfully",
@@ -188,6 +192,10 @@ const getMyProfile = async(req , res) => {
         })
     } catch (error) {
         console.log("error in fetching user details : " , error) ;
+        res.status(500).send({
+            success : false , 
+            message : "Error while fetching profile",
+        })
     }
 }
 
