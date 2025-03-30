@@ -22,6 +22,7 @@ import InternalServerError from "./Pages/InternalServerError.jsx";
 import AddMovie from "./Pages/AddMovie";
 import EditMovie from "./Pages/EditMovie";
 import Denied from "./Pages/Denied.jsx";
+import Profile from "./Pages/Profile.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
             <Route path="/addmovie" element={<AddMovie />} />
             <Route path="/editmovie/:id" element={<EditMovie />} />
             <Route path="/denied" element={<Denied />} />
+            <Route path="/profile" element={<Profile/>}/>
             {/* <Route path='/movie' element = {<MovieDetails/>} /> */}
             <Route
                 path="/server/server-error"
