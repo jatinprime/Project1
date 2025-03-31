@@ -113,7 +113,7 @@ const MovieDetails = () => {
                     </p>
                     <div className="flex space-x-4">
                         <button 
-                            onClick={() => setIsPlaying(true)}
+                            onClick={() => navigate('/videoplayer', { state: { videoUrl: getMovie.movievideo } })}
                         className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 md:px-6 rounded-md text-sm md:text-base flex items-center">
                             ▶ Play
                         </button>

@@ -23,6 +23,7 @@ import AddMovie from "./Pages/AddMovie";
 import EditMovie from "./Pages/EditMovie";
 import Denied from "./Pages/Denied.jsx";
 import Profile from "./Pages/Profile.jsx";
+import VideoPlayer from "./Pages/VideoPlayer";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
             <Route path="/editmovie/:id" element={<EditMovie />} />
             <Route path="/denied" element={<Denied />} />
             <Route path="/profile" element={<Profile/>}/>
+            <Route path="/videoplayer" element={<VideoPlayer/>} />
             {/* <Route path='/movie' element = {<MovieDetails/>} /> */}
             <Route
                 path="/server/server-error"
