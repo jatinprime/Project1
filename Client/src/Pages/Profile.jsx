@@ -50,21 +50,37 @@ const Profile = () => {
     }
 
     return (
-        <div>
-            <h2>Profile</h2>
-            <img src={user.avatar} alt="User Avatar" width="100" />
-            <p>
-                <strong>Name:</strong> {user.username}
-            </p>
-            <p>
-                <strong>Email:</strong> {user.email}
-            </p>
-            <p>
-                <strong>Age:</strong> {user.age || "Not Provided"}
-            </p>
-            <p>
-                <strong>Role:</strong> {user.role}
-            </p>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6">
+            <div className="bg-white p-6 rounded-2xl shadow-xl text-gray-800 max-w-md w-full text-center transform hover:scale-105 transition duration-300">
+                <h2 className="text-3xl font-bold mb-4 text-purple-700">Profile</h2>
+                <div className="flex justify-center">
+                    <img
+                        src={user.avatar}
+                        alt="User Avatar"
+                        className="w-24 h-24 rounded-full border-4 border-purple-500 shadow-md"
+                    />
+                </div>
+                <div className="mt-4 text-lg">
+                    <p className="mb-2">
+                        <strong className="text-gray-600">Name:</strong> {user.username}
+                    </p>
+                    <p className="mb-2">
+                        <strong className="text-gray-600">Email:</strong> {user.email}
+                    </p>
+                    <p className="mb-2">
+                        <strong className="text-gray-600">Age:</strong> {user.age || "Not Provided"}
+                    </p>
+                    <p className="mb-2">
+                        <strong className="text-gray-600">Role:</strong> {user.role}
+                    </p>
+                </div>
+                <button
+                    onClick={() => navigate("/")}
+                    className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300"
+                >
+                    Go Home
+                </button>
+            </div>
         </div>
     );
 };
