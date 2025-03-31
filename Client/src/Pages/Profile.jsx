@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
 
 const Profile = () => {
-    const {user, setUser , auth} = useContext(UserContext);
+    const {user, setUser , auth , role} = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -80,6 +80,18 @@ const Profile = () => {
                 >
                     Go Home
                 </button>
+                <br />
+                {role === "ADMIN" && 
+                    <>
+                        <button
+                    onClick={() => navigate("/addmovie")}
+                    className="mt-4 px-6 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-600"
+                >
+                    Add Movie
+                </button>
+                    </>
+
+                }
             </div>
         </div>
     );
