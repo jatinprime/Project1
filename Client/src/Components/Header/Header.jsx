@@ -199,6 +199,16 @@ const Header = () => {
                             </NavLink>
                         </>
                     )}
+                    {role === "ADMIN" && (
+                        <>
+                            <button
+                                onClick={() => navigate("/addmovie")}
+                                className="text-white hover:text-blue-500 font-semibold bg-transparent border-none cursor-pointer flex items-center space-x-2 pr-4"
+                            >
+                                Add Movie
+                            </button>
+                        </>
+                    )}
                     {auth && (
                         <button
                             onClick={handleProClick}
