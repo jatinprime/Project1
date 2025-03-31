@@ -13,6 +13,7 @@ const UserContextProvider = ({ children }) => {
   });
 
   const [user , setUser] = useState({});
+  const [moviename , setMoviename] = useState('') ;
 
   // Whenever auth or role changes, update localStorage
   useEffect(() => {
@@ -23,7 +24,7 @@ const UserContextProvider = ({ children }) => {
   }, [auth, role]);
 
   return (
-    <UserContext.Provider value={{ auth, setAuth, role, setRole, user, setUser }}>
+    <UserContext.Provider value={{ auth, setAuth, role, setRole, user, setUser , moviename , setMoviename }}>
       {children}
     </UserContext.Provider>
   );
