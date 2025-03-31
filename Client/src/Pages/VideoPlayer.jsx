@@ -14,12 +14,18 @@ const VideoPlayer = () => {
     }, [videoUrl, navigate]);
 
     return (
-        <div className="flex justify-center items-center h-screen bg-black">
+        <div className="flex justify-center items-center min-h-screen bg-black px-4">
             {videoUrl ? (
-                <video className="w-full max-w-4xl h-auto" controls autoPlay>
-                    <source src={videoUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                <div className="w-full max-w-4xl h-auto">
+                    <video
+                        className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+                        controls
+                        autoPlay
+                    >
+                        <source src={videoUrl} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             ) : (
                 <p className="text-white text-xl">No video available</p>
             )}
