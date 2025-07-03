@@ -1,9 +1,11 @@
 import React from 'react'
 import Header from '../Components/Header/Header'
 import { Outlet, useLocation } from 'react-router-dom'
-import Footer from '../Components/Footer/footer'
+// import Footer from '../Components/Footer/footer'
 import UserContextProvider from '../Context/Store'
 import { Toaster } from 'react-hot-toast'
+import FooterCode from '../Components/Footer/FooterCode'
+
 
 
 const Layout = () => {
@@ -15,7 +17,7 @@ const Layout = () => {
         <Toaster position="top-right" />
         {!hideHeader && <Header/>}
         <Outlet/>
-        <Footer/>
+        <FooterCode/>
       </div>
     </UserContextProvider>
     
