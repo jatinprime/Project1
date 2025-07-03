@@ -106,7 +106,7 @@ const MovieDetails = () => {
                     {" "}
                     {/* Adjust this margin to move the content up or down */}
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                        {getMovie.title}
+                        {getMovie.moviename}
                     </h1>
                     <p className="text-sm md:text-lg mb-6 max-w-lg">
                         {getMovie.description}
