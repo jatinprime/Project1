@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../Context/UserContext";
 import axios from "axios" ;
 import toast from "react-hot-toast" ;
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+
 
 const Login = () => {
   const { auth , setAuth } = useContext(UserContext);
@@ -47,7 +49,7 @@ const Login = () => {
 
     try{
 
-      const res = await axios.post("http://localhost:8000/api/v1/user/login" , formData , {
+      const res = await axios.post(`${API_BASE_URL}/user/login` , formData , {
         withCredentials : true
       })
 
