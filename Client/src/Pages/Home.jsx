@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import MovieCard from "../Components/MovieCard/MovieCard";
 // import MovieData from "../Movies/MovieData";
 import axios from "axios";
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ;
 import toast from 'react-hot-toast';
 
 /*

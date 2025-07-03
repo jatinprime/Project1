@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 // import MovieData from "../Movies/MovieData";
 // import UserContext from "../Context/UserContext";
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ;
 import axios from "axios";
 import UserContext from "../Context/UserContext";
 import toast from "react-hot-toast";

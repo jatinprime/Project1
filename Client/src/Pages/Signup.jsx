@@ -4,7 +4,7 @@ import UserContext from "../Context/UserContext";
 import {BsPersonCircle} from "react-icons/bs"
 import axios from "axios";
 import { toast } from "react-hot-toast";
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ;
 
 const Signup = () => {
   const { auth , setAuth } = useContext(UserContext);

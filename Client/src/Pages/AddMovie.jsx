@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const AddMovie = () => {
     const navigate = useNavigate() ;

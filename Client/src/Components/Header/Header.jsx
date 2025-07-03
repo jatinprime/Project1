@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../Context/UserContext";
 import toast from "react-hot-toast";
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ;
 import axios from "axios";
 
 const Header = () => {
