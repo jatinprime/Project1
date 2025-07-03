@@ -19,7 +19,7 @@ connectDb();
 // Middlewares
 app.use(
     cors({
-        origin: ["http://localhost:5173" , "project1-2yfq.vercel.app"], // ✅ Allow frontend origin
+        origin: ["http://localhost:5173" , "https://project1-2yfq.vercel.app"], // ✅ Allow frontend origin
         credentials: true, // ✅ Allow cookies & authentication headers
     })
 );
