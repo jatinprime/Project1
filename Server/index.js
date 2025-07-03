@@ -17,14 +17,9 @@ dotenv.config();
 connectDb();
 
 // Middlewares
-const allowedOrigins = [
-    "http://localhost:5173",  // ✅ Development frontend
-    "https://project1-2yfq.vercel.app"// ✅ Production frontend
-];
-
 app.use(
     cors({
-        origin: allowedOrigins, // ✅ Allow frontend origin
+        origin: "http://localhost:5173", // ✅ Allow frontend origin
         credentials: true, // ✅ Allow cookies & authentication headers
     })
 );

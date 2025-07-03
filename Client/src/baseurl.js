@@ -1,0 +1,1 @@
+export const API_BASE_URL = `https://project1-5-42ii.onrender.com/api/v1`
