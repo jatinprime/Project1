@@ -26,17 +26,17 @@ import Profile from "./Pages/Profile.jsx";
 import VideoPlayer from "./Pages/VideoPlayer";
 import { getTokenFromCookie, isTokenExpired } from "./utils/auth";
 
-const token = getTokenFromCookie();
+// const token = getTokenFromCookie();
 
-if (!token || isTokenExpired(token)) {
-    console.log("Token expired or missing. Logging out...");
-    localStorage.removeItem("auth");
-    localStorage.removeItem("role");
+// if (!token || isTokenExpired(token)) {
+//     console.log("Token expired or missing. Logging out...");
+//     localStorage.removeItem("auth");
+//     localStorage.removeItem("role");
 
-    if (window.location.pathname !== "/") {
-        window.location.href = "/";
-    }
-}
+//     if (window.location.pathname !== "/") {
+//         window.location.href = "/";
+//     }
+// }
 
 const router = createBrowserRouter(
     createRoutesFromElements(
