@@ -9,7 +9,7 @@ const router = express.Router() ;
 //routes
 router.post('/register' , upload.single("avatar") , registerUserController) ;
 router.post('/login' , loginUserController) ;
-router.get('/logout' , isLoggedIn , logoutUserController) ;
+router.get('/logout' , logoutUserController) ;
 router.get('/me' , isLoggedIn , getMyProfile) ;
 
 //export router

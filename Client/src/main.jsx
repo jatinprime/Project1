@@ -14,7 +14,7 @@ import Signup from "./Pages/Signup.jsx";
 import Home from "./Pages/Home.jsx";
 import Notfound from "./Pages/Notfound.jsx";
 import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
-import Contact from "./Pages/contact.jsx";
+// import Contact from "./Pages/contact.jsx";
 import MovieDetails from "./Pages/MovieDetails";
 import CategoryMoviePage from "./Pages/CategoryMoviePage.jsx";
 import SubscriptionPage from "./Pages/SubscriptionPage.jsx";
@@ -25,6 +25,7 @@ import Denied from "./Pages/Denied.jsx";
 import Profile from "./Pages/Profile.jsx";
 import VideoPlayer from "./Pages/VideoPlayer";
 import { getTokenFromCookie, isTokenExpired } from "./utils/auth";
+import Contact from "./Pages/Contact";
 
 // const token = getTokenFromCookie();
 
