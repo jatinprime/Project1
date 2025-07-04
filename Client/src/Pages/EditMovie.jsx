@@ -53,6 +53,8 @@ const EditMovie = () => {
                 {
                     headers: { "Content-Type": "application/json" },
                     withCredentials: true,
+                }, {
+                    withCredentials: true,
                 }
             );
             if (response.data.success) {

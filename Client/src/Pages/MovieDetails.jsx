@@ -31,7 +31,9 @@ const MovieDetails = () => {
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const { data } = await axios.get(`${API_BASE_URL}/movie/getMovieById/${id}`);
+                const { data } = await axios.get(`${API_BASE_URL}/movie/getMovieById/${id}`, {
+                    withCredentials: true,
+                });
                 setGetMovie(data.data);
             } catch (error) {
                 console.error(error);
@@ -43,7 +45,9 @@ const MovieDetails = () => {
     const handleDelete = async() => {
         const LoadingToast = toast.loading("deleting movie....") ;
         try {
-            const response = await axios.delete(`${API_BASE_URL}/movie/deleteMovie/${id}`) ;
+            const response = await axios.delete(`${API_BASE_URL}/movie/deleteMovie/${id}` , {
+                withCredentials: true,
+            }) ;
             if(response.data.success){
                 toast.success(response.data.message , {id: LoadingToast}) 
                 navigate('/')

@@ -61,6 +61,8 @@ const Signup = () => {
         headers : {
           "Content-Type": "multipart/form-data"
         }
+      }, {
+        withCredentials: true,
       })
       if (response.data.success) {
         toast.success("Signup successful!", { id: loadingToast, duration: 2000 });
